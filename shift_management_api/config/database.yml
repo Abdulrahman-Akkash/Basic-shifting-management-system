@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: "123456" # PostgreSQL şifreni buraya yaz
+  pool: 5
+
+development:
+  <<: *default
+  database: shift_management_api_development
+
+test:
+  <<: *default
+  database: shift_management_api_test
+
+production:
+  <<: *default
+  database: shift_management_api_production
+  username: postgres
+  password: <%= ENV["SHIFT_MANAGEMENT_API_DATABASE_PASSWORD"] %>
